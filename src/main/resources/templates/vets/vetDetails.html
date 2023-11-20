@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+
+<body>
+
+
+<h2>Owner Information</h2>
+
+
+<table class="table table-striped" th:object="${vet}">
+  <tr>
+    <th>Name</th>
+    <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td th:text="*{country}"></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td th:text="*{email}"></td>
+  </tr>
+  <tr>
+    <th>Licence Expiration Date</th>
+    <td th:text="*{licenceExpirationDate}"></td>
+  </tr>
+  <tr>
+    <th>Services</th>
+    <td><span th:each="service : ${vet.vetServices}"
+              th:text="${service.serviceName + '     '}"/> <span
+      th:if="${vet.nrOfServices == 0}">none</span></td>
+<!--    <td><a  th:href="@{'/vets/service/'+${vet.id}}">View services</a></td>-->
+  </tr>
+</table>
+
+<a th:href="@{/vet_service/new}" class="btn btn-primary">Add
+  New Service</a>
+
+<br />
+<br />
+<br />
+
+</body>
+
+</html>

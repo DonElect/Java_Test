@@ -1,0 +1,23 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+
+<body>
+
+<h2>Veterinarian</h2>
+<form th:action="@{/vet_service/new}" th:object="${vetService}" class="form-horizontal" id="add-vet-form" method="post">
+  <div class="form-group has-feedback">
+    <input
+      th:replace="~{fragments/inputField :: input ('Service Name', 'serviceName', 'text')}" />
+    <input
+      th:replace="~{fragments/inputField :: input ('Service Price', 'servicePrice', 'text')}" />
+  
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button
+        class="btn btn-primary" type="submit" >Create Service</button>
+    </div>
+  </div>
+</form>
+</body>
+</html>
